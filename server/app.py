@@ -6,15 +6,7 @@ from starlette.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from pymongo import MongoClient
-from models.models import Registration
-from typing import Optional
-from typing import Dict
-
-# from models.models import UserRegForm, editForm
-import random, string
-import smtplib
-from email.message import EmailMessage
-from bson import ObjectId
+from server.models.models import Registration
 from dotenv import load_dotenv
 
 # init
@@ -31,13 +23,13 @@ client = MongoClient(MONGODB_CONNECTION_URI)
 db = client["mediDoor"]
 part_form = db["users"]
 maps = db["map"]
-# ticket = db["tickets"]
 
-# try:
-#     client.admin.command("ping")
-#     print("Successfully connected to the database!")
-# except:
-#     print("Database connection refused. Please check status of database!")
+
+try:
+    client.admin.command("ping")
+    print("Successfully connected to the database!")
+except:
+    print("Database connection refused. Please check status of database!")
 
 # part_form.insert_one(
 #     {
