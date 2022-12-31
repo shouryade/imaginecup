@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediDoor</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> MediDoor </a>
+
+        <nav class="navbar">
+            <a href="/">home</a>
+            <a href="/">about</a>
+            <a href="/register" target="_blank">Register</a>
+
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </header>
+
+    <section class="home" id="home">
+
+        <div class="image">
+            <img src="/static/home-img.svg" alt="">
+        </div>
+
+        <div class="content">
+            <h3>Medical Care, Redefined.</h3>
+            <p>Taking advanced healthcare to your doorstep!</p>
+            <a href="/login" class="btn"> login now! <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+    </section>
+
+    <section class="icons-container">
+
+        <div class="icons">
+            <i class="fas fa-user-md"></i>
+            <h3>140+</h3>
+            <p>doctors at work</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-users"></i>
+            <h3>1040+</h3>
+            <p>satisfied patients</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-procedures"></i>
+            <h3>500+</h3>
+            <p>bed facility</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-hospital"></i>
+            <h3>80+</h3>
+            <p>available hospitals</p>
+        </div>
+
+    </section>
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>about</span> us </h1>
+
+        <div class="row">
+            <div class="content">
+                <p>{{fullname}}</p>
+                <p>{{phone}}</p>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section class="footer">
+
+
+        <div class="credit"> Created with ♥ by <span>Team Technophoria</span></div>
+
+    </section>
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>

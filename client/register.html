@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediDoor | Register </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> MediDoor </a>
+
+        <nav class="navbar">
+            <a href="/">home</a>
+            <a href="/">about</a>
+            <a href="/register" target="_blank">Register</a>
+
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </header>
+
+    <section class="signup" id="signup">
+
+        <h3 class="heading" style="padding-top: 7rem;"> <span>SIGNUP</span> NOW </h3>
+
+        <div class="row">
+
+            <form action="/register" method="post">
+                <h3>Register with your Details</h3>
+                <input type="text" placeholder="Your Name" name="fullname" value="{{fullname}}" class="box">
+                <input type="number" placeholder="Your Phone Number" name="phone" value="{{phone}}" class="box">
+                <input type="email" placeholder="Your Email" name="email" value="{{email}}" class="box">
+                <input type="password" placeholder="Password" name="password" value="{{password}}" class="box">
+                <input type="submit" value="Register Now" class="btn">
+                <br>
+                <p style="padding: 1rem;font-size:2rem">Existing user? <span><a href="/login">Login
+                            Now!</a></span></p>
+            </form>
+            <div class="image">
+                <img src="/static/book-img.svg" alt="">
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="footer">
+
+
+        <div class="credit"> Created with ♥ by <span>Team Technophoria</span></div>
+
+    </section>
+
+
+    <!-- custom js file link  -->
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
