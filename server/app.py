@@ -8,6 +8,7 @@ from starlette.templating import Jinja2Templates
 from pymongo import MongoClient
 from models.models import Registration
 from typing import Optional
+from typing import Dict
 
 # from models.models import UserRegForm, editForm
 import random, string
@@ -29,6 +30,7 @@ MONGODB_CONNECTION_URI = os.getenv("MONGODB_CONNECTION_URI")
 client = MongoClient(MONGODB_CONNECTION_URI)
 db = client["mediDoor"]
 part_form = db["users"]
+maps = db["map"]
 # ticket = db["tickets"]
 
 # try:
@@ -110,6 +112,8 @@ async def login(
                 "fullname": data["fullname"],
                 "email": data["email"],
                 "phone": data["phone"],
+                "data": data,
+                "getDash": False,
             },
         )
     else:
@@ -118,6 +122,50 @@ async def login(
             {
                 "request": request,
                 "em": "Invalid Credentials or User doesn't exist. Please contact your admin.",
+            },
+        )
+
+
+@app.post(
+    "/dashboard",
+    response_class=HTMLResponse,
+    tags=["POST Endpoint to populate Dashboard"],
+)
+async def populate(
+    request: Request,
+    fips: str = Form(...),
+    email: str = Form(...),
+    phone: int = Form(...),
+    fullname: str = Form(...),
+):
+
+    if bool(maps.find_one({"FIPS CODE": fips})):
+
+        dashData = maps.find_one({"FIPS CODE": fips})
+        prom = dashData["Prominent Disease"]
+        mortality = dashData[prom + "_Average_Mortality(in %)"]
+        county = dashData["County"]
+
+        return templates.TemplateResponse(
+            "user.html",
+            {
+                "request": request,
+                "getDash": True,
+                "dashData": dashData,
+                "fullname": fullname,
+                "email": email,
+                "phone": phone,
+                "prom": prom,
+                "mortality": mortality,
+                "county": county,
+            },
+        )
+    else:
+        return templates.TemplateResponse(
+            "error.html",
+            {
+                "request": request,
+                "em": "Invalid FIPS code or Data not available, please try with another FIPS code",
             },
         )
 

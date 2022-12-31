@@ -18,7 +18,7 @@
 <body>
     <header class="header">
 
-        <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> MediDoor </a>
+        <a href="/" class="logo"> <i class="fas fa-heartbeat"></i> MediDoor </a>
 
         <nav class="navbar">
             <a href="/">home</a>
@@ -30,65 +30,120 @@
         <div id="menu-btn" class="fas fa-bars"></div>
 
     </header>
-
-    <section class="home" id="home">
-
-        <div class="image">
-            <img src="/static/home-img.svg" alt="">
-        </div>
-
-        <div class="content">
-            <h3>Medical Care, Redefined.</h3>
-            <p>Taking advanced healthcare to your doorstep!</p>
-            <a href="/login" class="btn"> login now! <span class="fas fa-chevron-right"></span> </a>
-        </div>
+    <section class="about" style="margin-top:7rem" id="about">
+        <h1 class="heading"> <span>Welcome</span> {{(fullname.split(" "))[0]}} </h1>
 
     </section>
+    <section class="docs" id="docs">
 
-    <section class="icons-container">
+        <h1 class="heading"> My <span>Medical Documents</span> </h1>
 
-        <div class="icons">
-            <i class="fas fa-user-md"></i>
-            <h3>140+</h3>
-            <p>doctors at work</p>
-        </div>
+        <div class="box-container">
 
-        <div class="icons">
-            <i class="fas fa-users"></i>
-            <h3>1040+</h3>
-            <p>satisfied patients</p>
-        </div>
+            <div class="box">
 
-        <div class="icons">
-            <i class="fas fa-procedures"></i>
-            <h3>500+</h3>
-            <p>bed facility</p>
-        </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="#"> <i class="fas fa-calendar"></i> 31st dec, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> by {{fullname}} </a>
+                    </div>
+                    <h3>Medical History Records</h3>
+                    <p>Medical history and vaccination records</p>
+                    <a href="/" class="btn"> View <span class="fas fa-chevron-right"></span> </a>
+                </div>
+            </div>
 
-        <div class="icons">
-            <i class="fas fa-hospital"></i>
-            <h3>80+</h3>
-            <p>available hospitals</p>
-        </div>
+            <div class="box">
+                <div class="content">
+                    <div class="icon">
+                        <a href="#"> <i class="fas fa-calendar"></i> 31st dec, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> by {{fullname}} </a>
+                    </div>
+                    <h3>Current Medications</h3>
+                    <p>Records for prescriptions and medications</p>
+                    <a href="/" class="btn"> View <span class="fas fa-chevron-right"></span> </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content">
+                    <div class="image">
+                        <i class="fas fa-file-upload fa-5x" style="padding-bottom: 4rem;"></i>
+                    </div>
 
-    </section>
+                    <h3 style="text-align: center;">Upload more</h3>
 
-    <section class="about" id="about">
-
-        <h1 class="heading"> <span>about</span> us </h1>
-
-        <div class="row">
-            <div class="content">
-                <p>{{fullname}}</p>
-                <p>{{phone}}</p>
-
-
+                </div>
             </div>
 
 
         </div>
 
+
     </section>
+
+
+    {% if dashData %}
+    <p> </p>
+    {% else %}
+
+    <section class="signup" id="signup">
+
+        <h3 class="heading" style="padding-top: 7rem;"> <span>Find the most prevalent disease in your county</span></h3>
+        <div class="row">
+
+            <form action="/dashboard" method="post">
+                <h3>Enter FIPS Code</h3>
+                <input type="number" placeholder="Enter FIPS CODE" name="fips" value="{{fips}}" class="box">
+                <input type="hidden" name="fullname" value="{{fullname}}">
+                <input type="hidden" name="email" value="{{email}}">
+                <input type="hidden" name="phone" value="{{phone}}">
+
+
+                <input type="submit" value="Check" class="btn">
+                <br>
+            </form>
+            <div class="image">
+                <img src="/static/patient.png" style="margin-left: 2rem;" alt="patient">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+
+    {% if dashData %}
+    <section class="icons-container">
+
+        <div class="icons">
+            <i class="fas fa-disease"></i>
+            <h3 style="font-size: 2.5rem;text-shadow:none">{{prom.replace("_"," ")}}</h3>
+            <p>, the most prevalent disease in your county</p>
+        </div>
+
+
+        <div class="icons">
+            <i class="fas fa-procedures"></i>
+            <h3 style="font-size: 2.5rem;text-shadow:none">{{mortality}}%</h3>
+            <p>of people in your county succumb to this disease every year</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3 style="font-size: 2.5rem;text-shadow:none">{{county}}</h3>
+            <p>County</p>
+        </div>
+
+    </section>
+
+    <section class="home" id="home">
+        <h3 class="heading"> <span>Prominent Diseases for other Counties</span></h3>
+        <iframe src="{{ url_for('static', path = '/final.html') }}" height="1000px" width="100%" seamless></iframe>
+
+    </section>
+
+    {% else %}
+    <p> </p>
+    {% endif %}
+
 
     <section class="footer">
 

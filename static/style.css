@@ -9,6 +9,11 @@
     --border: .2rem solid var(--blue);
 }
 
+iframe[seamless] {
+    border: none;
+}
+
+
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -380,6 +385,76 @@ p {
 
 .signup .row form .btn {
     padding: 1rem 4rem;
+}
+
+.docs .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.docs .box-container .box {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.docs .box-container .box .image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-left: 7rem;
+    overflow: hidden;
+    border-radius: .5rem;
+}
+
+.docs .box-container .box .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.docs .box-container .box:hover .image img {
+    transform: scale(1.2);
+}
+
+.docs .box-container .box .content {
+    padding-top: 1rem;
+}
+
+.docs .box-container .box .content .icon {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.docs .box-container .box .content .icon a {
+    font-size: 1.4rem;
+    color: var(--light-color);
+}
+
+.docs .box-container .box .content .icon a:hover {
+    color: var(--green);
+}
+
+.docs .box-container .box .content .icon a i {
+    padding-right: .5rem;
+    color: var(--green);
+}
+
+.docs .box-container .box .content h3 {
+    color: var(--black);
+    font-size: 3rem;
+}
+
+.docs .box-container .box .content p {
+    color: var(--light-color);
+    font-size: 1.5rem;
+    line-height: 1.8;
+    padding: 1rem 0;
 }
 
 
