@@ -5,10 +5,6 @@ name = "pypi"
 
 [packages]
 fastapi = {extras = ["all"], version = "*"}
-pandas = "*"
-sklearn = "*"
-scikit-learn = "*"
-tensorflow = "*"
 bleach = "*"
 pymongo = {extras = ["srv"], version = "*"}
 
