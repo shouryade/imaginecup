@@ -137,6 +137,7 @@ async def populate(
         prom = dashData["Prominent Disease"]
         mortality = dashData[prom + "_Average_Mortality(in %)"]
         county = dashData["County"]
+        mortality = round(float(mortality), 2)
 
         return templates.TemplateResponse(
             "user.html",
